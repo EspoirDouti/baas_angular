@@ -1,0 +1,9 @@
+//Install the angular cli
+npm install -g @angular/cli
+
+//Create new angular project
+ng new my-app
+
+//Run the application
+cd my-app
+ng serve --open

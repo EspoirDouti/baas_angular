@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <h1>Simple Login Page </h1>
+
+  <h3 *ngIf="authService.user | async">
+    Welcome User: {{ (authService.user | async)?.email }}!
+  </h3>
+
+  <div *ngIf="!(authService.user | async)">
+    <input type="text" [(ngModel)]="email" placeholder="Email Address">
+    <input type="password" [(ngModel)]="password" placeholder="Password">
+
+    <button (click)="signup()" [disabled]="!email || !password" >
+      Signup
+    </button>
+
+    <button (click)="login()" [disabled]="!email || !password" >
+      Login
+    </button>
+  </div>
+
+  <button (click)="logout()" *ngIf="authService.user | async" >
+    Logout
+  </button>
+
+</body>
+</html>
